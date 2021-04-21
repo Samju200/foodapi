@@ -1,0 +1,66 @@
+const portfolioData = [
+  {
+    id: 1,
+    title: 'random',
+    image: 'https://samju200.github.io/samju/portfolio/img/foundation.png',
+    link: 'https://samju200.github.io/samju/foundation/index.html',
+    githublink: 'https://github.com/Samju200/samju/tree/master/foundation',
+  },
+  {
+    id: 2,
+    title: 'E-Commerce',
+    image: 'https://samju200.github.io/samju/portfolio/img/simple.png',
+    link: 'https://samju200.github.io/samju/simple/product.html',
+    githublink: 'https://github.com/Samju200/samju/tree/master/simple',
+  },
+  {
+    id: 3,
+    title: 'E-Commerce',
+    image: 'https://samju200.github.io/samju/portfolio/img/dribble.png',
+    link: 'https://samju200.github.io/samju/dribble/index.html',
+    githublink: 'https://github.com/Samju200/samju/tree/master/dribble',
+  },
+  {
+    id: 4,
+    title: 'E-Commerce',
+    image: 'https://samju200.github.io/samju/portfolio/img/martha.png',
+    link: 'https://samju200.github.io/samju/martha/index.html',
+    githublink: 'https://github.com/Samju200/samju/tree/master/martha',
+  },
+  {
+    id: 5,
+    title: 'Dom',
+    image: 'https://samju200.github.io/samju/portfolio/img/dom1.png',
+    link: 'https://samju200.github.io/DOM/dom1/dom.html',
+    githublink: 'https://github.com/Samju200/DOM/tree/master/dom1',
+  },
+  {
+    id: 6,
+    title: 'currency exchang',
+    image: 'https://samju200.github.io/samju/portfolio/img/currency.png',
+    link: 'https://samju200.github.io/samju/currency/index.html',
+    githublink: 'https://github.com/Samju200/samju/tree/master/currency',
+  },
+  {
+    id: 7,
+    title: 'fetch user',
+    image: 'https://samju200.github.io/samju/portfolio/img/fetch-user.png',
+    link: 'https://samju200.github.io/react-fetchusers/',
+    githublink: 'https://github.com/Samju200/react-fetchusers',
+  },
+  {
+    id: 8,
+    title: 'LinkedlIn Clone',
+    image: 'https://samju200.github.io/samju/portfolio/img/linkedlin-clone.png',
+    link: 'https://linkedin-clone-yt-4878b.web.app/',
+    githublink: 'https://github.com/Samju200',
+  },
+  {
+    id: 9,
+    title: 'Advance Todo',
+    image: 'https://samju200.github.io/samju/portfolio/img/todo-react.png',
+    link: 'https://samju200.github.io/todo/',
+    githublink: 'https://github.com/Samju200/todo',
+  },
+];
+module.exports = portfolioData;

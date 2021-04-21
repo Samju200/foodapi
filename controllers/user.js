@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 let User = require('../models/user');
+let Portfolio = require('../models/portfolio');
 require('dotenv').config();
 
 const signup = async (req, res) => {
@@ -131,5 +132,90 @@ const google = async (req, res) => {
     res.status(500).json({ message: 'something went wrong' });
   }
 };
+const facebook = async (req, res) => {
+  try {
+    // get userID, accessToken and action from request
+    const { userID, accessToken } = req.body;
 
-module.exports = { signup, signin, google };
+    if (!userID) {
+      res.status(400).json({ message: 'Facebook userId not provided' });
+    }
+
+    if (!accessToken) {
+      res.status(400).json({ message: 'Access token not provided' });
+    }
+    const axios = new Axios(req, res);
+    const urlGraphFacebook = `https://graph.facebook.com/${userID}?fields=email,name&access_token=${accessToken}`;
+
+    const facebookData = await axios.getCall(urlGraphFacebook);
+
+    let { name, id, email } = facebookData;
+
+    name = name.split(' ');
+    const firstName = name[0].toLowerCase();
+    const lastName = name[1].toLowerCase();
+
+    let user = await User.findOne({
+      facebookId: id,
+    });
+
+    if (user) {
+      const token = jwt.sign(
+        { email: user.email || null, id: user._id },
+        'test',
+        { expiresIn: '1h' }
+      );
+
+      // pick only required fields
+      user = _.pick(user, [
+        '_id',
+        'name',
+        'email',
+        'phone',
+        'location',
+        'active',
+        'account_type',
+      ]);
+
+      res.status(200).json({ message: { user, token } });
+    } else {
+      const userEmail = email ? email.toLowerCase() : null;
+      const data = {
+        name: `${firstName} ${lastName}`,
+        email: userEmail,
+        facebook_id: id,
+        account_type: 'facebook',
+      };
+      // create the new user in the database
+      user = User.create(data);
+      const token = jwt.sign(
+        { email: user.email || null, id: user._id },
+        'test',
+        { expiresIn: '1h' }
+      );
+      // pick only required fields
+      user = _.pick(user, [
+        '_id',
+        'name',
+        'email',
+        'phone',
+        'location',
+        'active',
+        'account_type',
+      ]);
+      res.status(200).json({ message: 'User login successful', user, token });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'something went wrong' });
+  }
+};
+const getPortfolioData = async (req, res) => {
+  try {
+    const portfolioData = await Portfolio.find({});
+    res.status(200).json({ message: ' successful', portfolioData });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'server error' });
+  }
+};
+module.exports = { signup, signin, google, facebook, getPortfolioData };
