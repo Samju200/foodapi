@@ -1,7 +1,7 @@
 require('dotenv').config();
-const portfolioData = require('../data');
-const connectionDb = require('../config/db');
-let Portfolio = require('../models/portfolio');
+const portfolioData = require('./data');
+const connectionDb = require('./config/db');
+let Portfolio = require('./models/portfolio');
 
 connectionDb();
 
