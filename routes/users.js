@@ -3,8 +3,7 @@ const router = require('express').Router();
 const {
   signup,
   signin,
-  google,
-  facebook,
+
   getPortfolioData,
 } = require('../controllers/user');
 
@@ -16,8 +15,8 @@ router.route('/').get((req, res) => {
 
 router.route('/signup').post(signup);
 router.route('/signin').post(signin);
-router.route('/google').post(google);
-router.route('/facebook').post(facebook);
+// router.route('/google').post(google);
+// router.route('/facebook').post(facebook);
 router.route('/portfolio').get(getPortfolioData);
 
 module.exports = router;
