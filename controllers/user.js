@@ -213,13 +213,13 @@ const google = async (req, res) => {
 //     res.status(500).json({ message: 'something went wrong' });
 //   }
 // };
-const getPortfolioData = async (req, res) => {
-  try {
-    const portfolioData = await Portfolio.find({});
-    res.status(200).json({ message: ' successful', portfolioData });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'server error' });
-  }
-};
-module.exports = { signup, signin, google, facebook, getPortfolioData };
+// const getPortfolioData = async (req, res) => {
+//   try {
+//     const portfolioData = await Portfolio.find({});
+//     res.status(200).json({ message: ' successful', portfolioData });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'server error' });
+//   }
+// };
+module.exports = { signup, signin };
