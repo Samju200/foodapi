@@ -12,6 +12,7 @@ const signup = async (req, res) => {
     firstName,
     lastName,
     email,
+    phone,
     password,
     confirmPassword,
     location,
@@ -30,6 +31,7 @@ const signup = async (req, res) => {
       email,
       password: hashedPassword,
       name: `${firstName} ${lastName}`,
+      phone,
       location,
     });
 

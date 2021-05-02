@@ -9,11 +9,3 @@ Content-Type: application/json
     "confirmPassword":"samju100",
     "location":"lagos"
 }
-{
-   "firstName":"samuel",
-   "lastName":"samju",
-    "email":"samju71@gmail.com",
-    "password":"samju100",
-    "confirmPassword":"samju100",
-    "location":"lagos"
-}
