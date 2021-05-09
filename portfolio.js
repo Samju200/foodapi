@@ -16,4 +16,4 @@ const importData = async () => {
     process.exit(1);
   }
 };
--importData();
+importData();
