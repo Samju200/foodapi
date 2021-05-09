@@ -1,10 +1,10 @@
-POST  localhost:5000/users/signin
+POST localhost:5000/users/signup
 Content-Type: application/json
 
 {
    "firstName":"samuel",
    "lastName":"samju",
-    "email":"samju70@gmail.com",
+    "email":"samju77770@gmail.com",
     "password":"samju100",
     "confirmPassword":"samju100",
     "location":"lagos"
