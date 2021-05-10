@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Axios = require('Axios');
+// const Axios = require('Axios');
 let User = require('../models/user');
 let Portfolio = require('../models/portfolio');
 
 require('dotenv').config();
-const { OAuth2Client } = require('google-auth-library');
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+// const { OAuth2Client } = require('google-auth-library');
+// const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 const signup = async (req, res) => {
   const {
     firstName,
