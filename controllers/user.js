@@ -67,75 +67,75 @@ const signin = async (req, res) => {
   }
 };
 
-const google = async (req, res) => {
-  try {
-    // get token and action from request
-    const { idToken } = data;
-    // verify token
-    const verify = await googleClient.verifyIdToken({
-      idToken,
-      audience: [process.env.GOOGLE_CLIENT_ID],
-    });
-    // select data from payload
-    let { email_verified, name, email, picture } = verify.payload;
+// const google = async (req, res) => {
+//   try {
+//     // get token and action from request
+//     const { idToken } = data;
+//     // verify token
+//     const verify = await googleClient.verifyIdToken({
+//       idToken,
+//       audience: [process.env.GOOGLE_CLIENT_ID],
+//     });
+//     // select data from payload
+//     let { email_verified, name, email, picture } = verify.payload;
 
-    // if email is verified
-    if (email_verified) {
-      // check for user existence in the database
-      let user = await User.findOne({
-        email,
-      });
-      let token = null;
+//     // if email is verified
+//     if (email_verified) {
+//       // check for user existence in the database
+//       let user = await User.findOne({
+//         email,
+//       });
+//       let token = null;
 
-      // if user is trying to sign up
-      if (user && user.type === 'google') {
-        token = jwt.sign({ email: user.email, id: user._id }, 'test', {
-          expiresIn: '1h',
-        });
+//       // if user is trying to sign up
+//       if (user && user.type === 'google') {
+//         token = jwt.sign({ email: user.email, id: user._id }, 'test', {
+//           expiresIn: '1h',
+//         });
 
-        // pick only required fields
-        user = _.pick(user, [
-          '_id',
-          'name',
-          'email',
-          'phone',
-          'location',
-          'active',
-          'account_type',
-        ]);
-      } else if (user && !user.google) {
-        res.status(400).json({ message: 'Google authentication failed.' });
-      } else {
-        // if user doesn't exist
-        // data to be stored
-        const data = {
-          name,
-          email: email.toLowerCase(),
-          account_type: 'google',
-        };
-        // create the new user document
-        user = User.create(data);
-        token = jwt.sign({ email: user.email, id: user._id }, 'test', {
-          expiresIn: '1h',
-        });
+//         // pick only required fields
+//         user = _.pick(user, [
+//           '_id',
+//           'name',
+//           'email',
+//           'phone',
+//           'location',
+//           'active',
+//           'account_type',
+//         ]);
+//       } else if (user && !user.google) {
+//         res.status(400).json({ message: 'Google authentication failed.' });
+//       } else {
+//         // if user doesn't exist
+//         // data to be stored
+//         const data = {
+//           name,
+//           email: email.toLowerCase(),
+//           account_type: 'google',
+//         };
+//         // create the new user document
+//         user = User.create(data);
+//         token = jwt.sign({ email: user.email, id: user._id }, 'test', {
+//           expiresIn: '1h',
+//         });
 
-        // pick only required fields
-        user = _.pick(user, [
-          '_id',
-          'name',
-          'email',
-          'phone',
-          'location',
-          'active',
-          'account_type',
-        ]);
-      }
-      res.status(200).json({ message: 'User login successful', user, token });
-    }
-  } catch (error) {
-    res.status(500).json({ message: 'something went wrong' });
-  }
-};
+//         // pick only required fields
+//         user = _.pick(user, [
+//           '_id',
+//           'name',
+//           'email',
+//           'phone',
+//           'location',
+//           'active',
+//           'account_type',
+//         ]);
+//       }
+//       res.status(200).json({ message: 'User login successful', user, token });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: 'something went wrong' });
+//   }
+// };
 // const facebook = async (req, res) => {
 //   try {
 //     // get userID, accessToken and action from request
@@ -213,13 +213,13 @@ const google = async (req, res) => {
 //     res.status(500).json({ message: 'something went wrong' });
 //   }
 // };
-const getPortfolioData = async (req, res) => {
-  try {
-    const portfolioData = await Portfolio.find({});
-    res.status(200).json({ message: ' successful', portfolioData });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'server error' });
-  }
-};
-module.exports = { signup, signin, google, getPortfolioData };
+// const getPortfolioData = async (req, res) => {
+//   try {
+//     const portfolioData = await Portfolio.find({});
+//     res.status(200).json({ message: ' successful', portfolioData });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'server error' });
+//   }
+// };
+module.exports = { signup, signin };
