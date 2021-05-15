@@ -16,9 +16,7 @@ const feedback = async (req, res) => {
       email,
       message,
     });
-    res
-      .status(200)
-      .json({ feedback, message: 'Your feedback successfully sent' });
+    res.status(200).json({ message: 'Your feedback successfully sent' });
   } catch (error) {
     res.status(500).json({ message: 'something went wrong' });
   }
