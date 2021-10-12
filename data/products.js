@@ -27,7 +27,7 @@ const products = [
     category: 'WOMEN COLLECTION',
     imageUrl: 'https://samju200.github.io/samju/martha/img/woman5.jpg',
     price: 220,
-    countInStock: 0,
+    countInStock: 6,
     brand: 'Lacoste',
     rating: 4.8,
     numReviews: 17,
