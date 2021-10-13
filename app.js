@@ -15,9 +15,11 @@ app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
 const usersRouter = require('./routes/users');
 const messageRouter = require('./routes/message');
 const productRoutes = require('./routes/productRoutes');
+const subscribeRoutes = require('./routes/subscribe');
 // app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 app.use('/', messageRouter);
+app.use('/', subscribeRoutes);
 app.use('/api/products', productRoutes);
 
 // app.listen(port, () => {
