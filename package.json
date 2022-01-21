@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "data:import": "node controllers/portfolio.js"
+    "data:import": "node seedScript.js"
   },
   "keywords": [],
   "author": "",
