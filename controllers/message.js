@@ -1,5 +1,6 @@
 let Message = require('../models/message');
 const transporter = require('../config/mailer');
+require('dotenv').config();
 const getFeedback = async (req, res) => {
   try {
     const feedback = await Message.find({});
@@ -11,7 +12,6 @@ const getFeedback = async (req, res) => {
 };
 const feedback = async (req, res) => {
   const { name, email, message } = req.body;
-  const from = 'samju6677@gmail.com';
   try {
     const feedback = await Message.create({
       name,
@@ -19,10 +19,10 @@ const feedback = async (req, res) => {
       message,
     });
     const mailOptions = {
-      from: from,
+      from: process.env.Email,
       to: email,
       subject: `<h3>SAMJU </h3>`,
-      text: `<p>Thanks for contacting us. We will get back to you shortly</p>`,
+      html: `<p>Thanks for contacting us. We will get back to you shortly</p>`,
     };
 
     // res.status(200).json({ message: 'Your feedback successfully sent' });
