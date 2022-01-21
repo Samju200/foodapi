@@ -11,14 +11,22 @@ const getFeedback = async (req, res) => {
 };
 const feedback = async (req, res) => {
   const { name, email, message } = req.body;
+  const to = 'samju6677@gmail.com';
   try {
     const feedback = await Message.create({
       name,
       email,
       message,
     });
+    const mailOptions = {
+      from: to,
+      to: from,
+      subject: name,
+      text: 'Thanks for contacting us. We will get back to you shortly',
+    };
+
     // res.status(200).json({ message: 'Your feedback successfully sent' });
-    transporter.sendMail(feedback, function (err, info) {
+    transporter.sendMail(mailOptions, function (err, info) {
       if (err) {
         res.status(500).send({
           success: false,
