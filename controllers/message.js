@@ -11,7 +11,7 @@ const getFeedback = async (req, res) => {
 };
 const feedback = async (req, res) => {
   const { name, email, message } = req.body;
-  const to = 'samju6677@gmail.com';
+  const from = 'samju6677@gmail.com';
   try {
     const feedback = await Message.create({
       name,
@@ -19,10 +19,10 @@ const feedback = async (req, res) => {
       message,
     });
     const mailOptions = {
-      from: to,
-      to: from,
-      subject: name,
-      text: 'Thanks for contacting us. We will get back to you shortly',
+      from: from,
+      to: email,
+      subject: `<h3>SAMJU </h3>`,
+      text: `<p>Thanks for contacting us. We will get back to you shortly</p>`,
     };
 
     // res.status(200).json({ message: 'Your feedback successfully sent' });
