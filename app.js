@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const connectionDb = require('./config/db');
+// const transporter = require('./config/mailer');
 require('dotenv').config();
 
 const app = express();
