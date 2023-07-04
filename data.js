@@ -83,7 +83,7 @@ const foodData = [
     country: "Nigeria",
     review: 20,
     status: "Available",
-    rating: "3.5",
+    rating: "3.7",
   },
   {
     img: "https://images.app.goo.gl/ae1FCxkC51arcxhb6",
