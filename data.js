@@ -101,7 +101,7 @@ const foodData = [
     location: "Eat & Drink",
     state: "Lagos",
     country: "Nigeria",
-    review: 20,
+    review: 21,
     status: "Available",
     rating: "5.0",
   },
