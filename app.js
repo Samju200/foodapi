@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-// connectionDb();
-// app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
+connectionDb();
+app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
 
 // const exercisesRouter = require('./routes/exercises');
 const usersRouter = require("./routes/users");
@@ -23,11 +23,11 @@ app.use("/", messageRouter);
 app.use("/", subscribeRoutes);
 app.use("/api/products", productRoutes);
 
-// app.listen(port, () => {
-//   console.log(`Server is running on port: ${port}`);
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port: ${PORT}`);
 // });
-connectionDb().then(() => {
-  app.listen(PORT, () => {
-    console.log("listening for requests");
-  });
-});
+// // connectionDb().then(() => {
+// //   app.listen(PORT, () => {
+// //     console.log("listening for requests");
+// //   });
+// // });
